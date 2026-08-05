@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: my-statefulset
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-database
+  template:
+    metadata:
+      labels:
+         app: app-database
+    spec:
+      containers:
+      - name: mysql-db
+        image: venkatesh676/phpapp:dbimage
+        ports:
+        - containerPort: 3306
+      # secret intergration
+        envFrom:
+        - secretRef:
+            name: my-secret
+      # volume integration
+        volumeMounts:
+        - name: pvc-1
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: pvc-1
+        persistentVolumenClaim:
+          name: my-pvc
