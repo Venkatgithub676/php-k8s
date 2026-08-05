@@ -28,4 +28,4 @@ spec:
       volumes:
       - name: pvc-1
         persistentVolumeClaim:
-          name: my-pvc
+          claimName: my-pvc
