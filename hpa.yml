@@ -1,5 +1,5 @@
 apiVersion: autoscaling/v2
-kind: HorizantalPodAutoscaler
+kind: HorizontalPodAutoscaler
 metdata:
   name: my-hpa
 spec:
